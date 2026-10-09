@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="ultron-token" content="__ULTRON_TOKEN__">
+  <title>Ultron — Personal AI Voice Assistant</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <div class="title-block">
+        <h1>ULTRON</h1>
+        <p class="subtitle">Personal AI Voice Assistant · <span id="version">v1.0</span></p>
+      </div>
+      <button id="settings-btn" class="btn secondary settings-btn" type="button" title="Settings">⚙ Settings</button>
+    </header>
+
+    <div class="status" role="status" aria-live="polite">
+      <span id="status-dot" class="dot ready"></span>
+      <strong id="status-state">Ready</strong>
+      <span id="status-detail" class="detail"></span>
+    </div>
+
+    <section id="chat" class="chat" aria-label="Conversation" aria-live="polite"></section>
+
+    <form id="input-form" class="input-row" autocomplete="off">
+      <input id="input" type="text" maxlength="4000"
+             placeholder="Type a message, e.g. 'what time is it' or 'open YouTube'…" aria-label="Message">
+      <button id="send-btn" class="btn primary" type="submit">Send</button>
+    </form>
+
+    <div class="controls">
+      <button id="mic-btn" class="btn mic" type="button">● Start Listening</button>
+      <button id="mute-btn" class="btn secondary" type="button">Mute</button>
+      <button id="stop-btn" class="btn secondary" type="button">Stop Speaking</button>
+      <button id="clear-btn" class="btn secondary" type="button">Clear Conversation</button>
+      <label class="switch">
+        <input id="continuous" type="checkbox">
+        <span class="slider"></span>
+        <span>Continuous</span>
+      </label>
+    </div>
+  </main>
+
+  <dialog id="settings" class="settings">
+    <form method="dialog" id="settings-form">
+      <h2>Settings</h2>
+
+      <h3>AI</h3>
+      <label>Provider
+        <select id="set-provider">
+          <option value="openai">openai</option>
+          <option value="none">none (local commands only)</option>
+        </select>
+      </label>
+      <label>Model <input id="set-model" type="text" maxlength="100"></label>
+      <label>API key <input id="set-key" type="password" maxlength="300" autocomplete="off"></label>
+      <p id="key-hint" class="hint"></p>
+
+      <h3>Voice</h3>
+      <label>Voice <select id="set-voice"><option value="">System default</option></select></label>
+      <label>Speech rate <span id="rate-value" class="value"></span>
+        <input id="set-rate" type="range" min="80" max="300" step="5">
+      </label>
+      <label>Volume <span id="volume-value" class="value"></span>
+        <input id="set-volume" type="range" min="0" max="1" step="0.05">
+      </label>
+      <label>Recognition language <input id="set-lang" type="text" maxlength="20" placeholder="en-US"></label>
+
+      <p class="hint">Privacy: the microphone is only used while Ultron shows “Listening”. Your browser sends
+        speech to its speech service for transcription; Ultron never stores audio.</p>
+      <p id="settings-error" class="error-text"></p>
+
+      <div class="dialog-buttons">
+        <button id="settings-cancel" class="btn secondary" type="button">Cancel</button>
+        <button id="settings-apply" class="btn primary" type="button">Apply</button>
+        <button id="settings-save" class="btn primary" type="button">Save to .env</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+# Ultron v1.0 — tested with Python 3.12–3.14. On Windows use Python 3.11–3.13 for voice input
+# (PyAudio has no prebuilt Windows wheel for 3.14 yet; everything else works without it).
+customtkinter>=5.2,<7
+python-dotenv>=1.0,<2
+openai>=1.40,<4
+SpeechRecognition>=3.10,<4
+PyAudio>=0.2.14; sys_platform == "win32" and python_version < "3.14"
+pyttsx3>=2.90,<3
+
+# Testing
+pytest>=8,<10
