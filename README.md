@@ -239,3 +239,4 @@ Run `python main.py --check` and look at `logs\ultron.log` (secrets are redacted
 - Each spoken reply starts a short helper process, adding a small delay before speech; this is what makes
   instant "stop speaking" reliable.
 - Web lookups (`look up …`) return short instant answers only; Ultron does not browse the web.
+# ultron
